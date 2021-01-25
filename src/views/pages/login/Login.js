@@ -29,6 +29,7 @@ class Login extends Component {
       errors: {
         email: "",
         password: "",
+        login :""
       }
     };
     this.handleChange = this.handleChange.bind(this);
@@ -60,7 +61,7 @@ class Login extends Component {
       [name]: value
     });
   }
-
+  
   loginForm = async () => {
     const { email, password } = this.state;
     const form = {
@@ -116,11 +117,14 @@ class Login extends Component {
                         <CInput type="password" disabled={this.state.loading} name="password" value={password} placeholder="Password" autoComplete="current-password" onChange={this.handleChange} />
                         <div className="text-danger">{errors.password}</div>
                       </CInputGroup>
-                      <CRow>
-                        <CCol xs="6">
-                          <CButton color="primary" disabled={this.state.loading} className="px-12" onClick={() => this.loginForm()}>Login</CButton>
-                          {this.state.loading && <CSpinner color="info" size="sm" />}
-
+                      <CRow >
+                        <CCol>
+                       
+                          <CButton color="primary" disabled={this.state.loading || !email ||!password} className="px-12  col-sm-12 col-md-3 offset-md-4" onClick={() => this.loginForm()}>Login</CButton>
+                          {this.state.loading &&  (<span>
+                            &ensp;
+                            <CSpinner  color="info" size="sm"/>
+                          </span>) }
                         </CCol>
                       </CRow>
                     </CForm>
