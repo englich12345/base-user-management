@@ -1,8 +1,8 @@
-import axios from 'axios'
 
+const axios = require('axios');
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 export const getUserList = async () => {
-    const baseUrl = process.env.REACT_APP_BASE_URL
     const url = baseUrl + "api/user"
     return axios.get(url)
     .catch(err=>{
@@ -10,3 +10,19 @@ export const getUserList = async () => {
     })
 
 }
+
+
+
+export const login = async (params) => {
+    const url = baseUrl + "api/user/login"
+    const reqParams = {
+        email: params.email,
+        password: params.password
+    }
+    try {
+        return await axios.post(url, reqParams);
+    } catch (error) {
+        console.log(error)
+    }
+}
+ 
