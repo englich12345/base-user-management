@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './login.css'
 // import { Link } from 'react-router-dom'
 import {
   CButton,
@@ -32,15 +33,15 @@ class Login extends Component {
         login :""
       }
     };
-    this.handleChange = this.handleChange.bind(this);
+  
     // this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleChange(event) {
+  handleChange=(event)=> {
     const { name, value } = event.target
     const errors = {
       userName: "",
       password: "",
-    }
+  }
     if (!value) {
       this.setState(prevState => ({
         errors: {
@@ -87,7 +88,7 @@ class Login extends Component {
   }
 
   render() {
-    const { email, password, errors } = this.state
+    const { email, password, errors,loading} = this.state
     return (
       <div className="c-app c-default-layout flex-row align-items-center">
         <CContainer>
@@ -105,23 +106,24 @@ class Login extends Component {
                             <CIcon name="cil-user" />
                           </CInputGroupText>
                         </CInputGroupPrepend>
-                        <CInput type="text" disabled={this.state.loading} name="email" value={email} placeholder="Email" autoComplete="username" onChange={this.handleChange} />
-                        <div className="text-danger">{errors.email}</div>
+                        <CInput type="text" disabled={loading} name="email" value={email} placeholder="Email" autoComplete="username" onChange={(event)=>this.handleChange(event)} />
                       </CInputGroup>
+                      <div className="text-danger empty-email-password">{errors.email}</div>
                       <CInputGroup className="mb-3">
                         <CInputGroupPrepend>
                           <CInputGroupText>
                             <CIcon name="cil-lock-locked" />
                           </CInputGroupText>
                         </CInputGroupPrepend>
-                        <CInput type="password" disabled={this.state.loading} name="password" value={password} placeholder="Password" autoComplete="current-password" onChange={this.handleChange} />
-                        <div className="text-danger">{errors.password}</div>
+                        <CInput type="password" disabled={loading} name="password" value={password} placeholder="Password" autoComplete="current-password" onChange={(event)=>this.handleChange(event)} />
                       </CInputGroup>
+                      <div className="text-danger empty-email-password">{errors.password}</div>
+
                       <CRow >
                         <CCol>
-                       
-                          <CButton color="primary" disabled={this.state.loading || !email ||!password} className="px-12  col-sm-12 col-md-3 offset-md-4" onClick={() => this.loginForm()}>Login</CButton>
-                          {this.state.loading &&  (<span>
+                       <br/>
+                          <CButton color="primary" disabled={loading || !email ||!password} className="px-12  col-sm-12 col-md-3 offset-md-4" onClick={() => this.loginForm()}>Login</CButton>
+                          {loading &&  (<span>
                             &ensp;
                             <CSpinner  color="info" size="sm"/>
                           </span>) }
