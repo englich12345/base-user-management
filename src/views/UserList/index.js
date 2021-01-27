@@ -1,8 +1,7 @@
 import React, { Component } from "react"
 import CIcon from '@coreui/icons-react';
-import axios from 'axios';
 import { getUserList } from '../../api/user.api';
-const baseUrl = process.env.REACT_APP_BASE_URL
+
 class UserList extends Component {
     constructor() {
         super()
@@ -40,7 +39,7 @@ class UserList extends Component {
                     </thead>
                     <tbody>
                         {
-                            this.state.list.map((value, index) => {
+                            list.map((value, index) => {
                                 return <tr>
                                     <td>{value.name}</td>
                                     <td>{value.role}</td>
