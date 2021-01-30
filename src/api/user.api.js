@@ -21,18 +21,13 @@ export const getUserList = async () => {
 
 export const register = async (params) => {
     const url = baseUrl + "api/user/register"
-    const regParams = {
+    const reqParams = {
         name: params.name,
         email: params.email,
         role: params.role,
         password: params.password
     }
-    console.log("regParams", regParams)
-    try {
-        return await axios.post(url, regParams);
-    } catch (error) {
-        console.log(error)
-    }
+    return await axios.post(url, reqParams);
 }
 
 
@@ -42,10 +37,6 @@ export const login = async (params) => {
         email: params.email,
         password: params.password
     }
-    try {
-        return await axios.post(url, reqParams);
-    } catch (error) {
-        console.log(error)
-    }
+    return await axios.post(url, reqParams);
 }
 
