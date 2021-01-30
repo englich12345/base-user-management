@@ -18,7 +18,7 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { login } from '../../../api/user.api'
-import { setUser } from '../../../common/localStorage'
+import { setUser } from '../../../common/localStorage'    
 
 class Login extends Component {
   constructor() {
@@ -33,15 +33,11 @@ class Login extends Component {
         login :""
       }
     };
-  
-    // this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange=(event)=> {
     const { name, value } = event.target
-    const errors = {
-      userName: "",
-      password: "",
-  }
+    
+
     if (!value) {
       this.setState(prevState => ({
         errors: {
