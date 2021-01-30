@@ -16,7 +16,6 @@ class UserList extends Component {
 
     componentDidMount = async () => {
         await getUserList().then(res => {
-            console.log(res)
             this.setState({
                 list: res.data
             })
