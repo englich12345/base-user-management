@@ -8,11 +8,6 @@ import {
 
 } from '@coreui/react'
 import {register} from '../../../api/user.api'
-// import { from } from 'core-js/fn/array'
-// import {useHistory} from 'react-router-dom'
-// const BrowserHistory = require('react-router/lib/BrowserHistory').default;
-
-
 class Register extends Component {
     constructor() {
         super()
@@ -131,7 +126,7 @@ class Register extends Component {
                                             <CSelect name="role" custom size="md" id="selectLg" value={this.state.value} onChange={this.handleChange}>
                                                 <option >Please select</option>
                                                 <option value="user">User</option>
-                                                <option value="adimin">Admin</option>
+                                                <option value="admin">Admin</option>
                                             </CSelect>
                                         </CFormGroup>
                                         <CFormGroup>
