@@ -1,6 +1,9 @@
 import React, { Component } from "react"
 import CIcon from '@coreui/icons-react';
 import { getUserList } from '../../api/user.api';
+import { Link } from "react-router-dom";
+import moment from 'moment';
+import {CButton} from '@coreui/react'
 
 class UserList extends Component {
     constructor() {
@@ -12,7 +15,7 @@ class UserList extends Component {
     }
 
     componentDidMount = async () => {
-       await getUserList().then(res => {
+        await getUserList().then(res => {
             console.log(res)
             this.setState({
                 list: res.data
@@ -21,12 +24,15 @@ class UserList extends Component {
             console.log(err)
         }
 
-)}
+        )
+    }
     render() {
         const { list } = this.state
         return (
             <div className="container">
-                <div className="col-sm-2 btn btn-success">ADD A NEW USER</div><br /><br />
+                <div>
+                    <Link to="/Register" className="col-sm-2 btn btn-success">ADD A NEW USER</Link><br /><br />
+                </div>
                 <table class="table">
                     <thead>
                         <tr>
@@ -44,8 +50,10 @@ class UserList extends Component {
                                     <td>{value.name}</td>
                                     <td>{value.role}</td>
                                     <td>{value.email}</td>
-                                    <td>{value.createdAt}</td>
-                                    {value.role === 'admin' && <td><button type="submit" className="btn btn-success"><CIcon name="cil-comment-square-edit" /> Edit</button>   <button type="submit" className="btn btn-success"><CIcon name="cil-trash" /><i className="cil-trash"></i> Delete</button></td>}
+                                    <td>{moment(value.createdAt).format("MMM Do YY")}</td>
+                                    {value.role === 'user' && <td>
+                                    <CButton type="submit" className="btn btn-success">Edit</CButton>  
+                                     <button type="submit" className="btn btn-success bg-danger"><CIcon name="cil-trash" /><i className="cil-trash"></i> Delete</button></td>}
 
                                 </tr>
 
