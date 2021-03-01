@@ -4,7 +4,6 @@ import {
   CContainer, CCol,
   CFormGroup, CLabel, CInput, CRow, CCardGroup, CCard, CButton, CSelect, CCardFooter
 } from '@coreui/react'
-
 import { getUserById, register,update} from '../../../api/user.api'
 // import { from } from 'core-js/fn/array'
 // import {useHistory} from 'react-router-dom'
@@ -76,27 +75,6 @@ class Register extends Component {
           loading: false
         })
       })
-
-=======
-import {register} from '../../../api/user.api'
-class Register extends Component {
-    constructor() {
-        super()
-        this.state = {
-            list:[],
-            name: "",
-            email: "",
-            password: "",
-            role: "",
-            loading: false,
-            errors: {
-                name: "",
-                email: "",
-                password: "",
-                role: "",
-
-            }
-        }
 
     }
     else{
@@ -192,7 +170,7 @@ class Register extends Component {
                     <CSelect name="role" custom size="md" id="selectLg" value={this.state.value} onChange={this.handleChange}>
                       <option >Please select</option>
                       <option value="user">User</option>
-                      <option value="adimin">Admin</option>
+                      <option value="adimin">Admin</option>    
                     </CSelect>
                   </CFormGroup>
                   <CFormGroup>
@@ -221,86 +199,6 @@ class Register extends Component {
                         <CButton color="success" block onClick={() => this.props.history.push('/')}>Cancel</CButton>
                         {/* <Link to="/user-list" className="  btn btn-success" block >Cancel</Link> */}
                       </CCol>
-    render() {
-        const { email, name, password, errors } = this.state
-        return (
-            <div className=" align-items-center">
-                <CContainer onSubmit={this.onSave} >
-                    <CRow className="justify-content-center">
-                        <CCol md="6">
-                            <CForm action="" method="post">
-                                <CCardGroup>
-                                    <CCard className="p-4">
-                                        <CFormGroup>
-                                            <CLabel>Email</CLabel>
-                                            <CInput
-                                                className="mb-3"
-                                                type="email"
-                                                id="email"
-                                                name="email"
-                                                value={email}
-                                                placeholder="Please enter your email"
-                                                autoComplete="email"
-                                                onChange={(event) => { this.handleChange(event) }}
-                                            />
-                                        </CFormGroup>
-                                        <div className="text-danger empty-email-password">{errors.email}</div>
-                                        <CFormGroup>
-                                            <CLabel>Name</CLabel>
-                                            <CInput
-                                                className="mb-3"
-                                                type="name"
-                                                id="name"
-                                                name="name"
-                                                value={name}
-                                                placeholder="Please enter your name"
-                                                autoComplete="current-name"
-                                                onChange={(event) => { this.handleChange(event) }}
-                                            />
-                                        </CFormGroup>
-                                        <div className="text-danger empty-email-password">{errors.name}</div>
-                                        <CFormGroup>
-                                            <CLabel> Role :</CLabel>
-                                            <CSelect name="role" custom size="md" id="selectLg" value={this.state.value} onChange={this.handleChange}>
-                                                <option >Please select</option>
-                                                <option value="user">User</option>
-                                                <option value="admin">Admin</option>
-                                            </CSelect>
-                                        </CFormGroup>
-                                        <CFormGroup>
-                                            <CLabel>Password</CLabel>
-                                            <CInput
-                                                className="mb-3"
-                                                type="password"
-                                                id="password"
-                                                name="password"
-                                                value={password}
-                                                placeholder="Please enter your password"
-                                                autoComplete="current-password"
-                                                onChange={(event) => { this.handleChange(event) }}
-                                            />
-
-                                        </CFormGroup>
-                                        <div className="text-danger empty-email-password">{errors.password}</div>
-
-                                        <CCardFooter className="p-4">
-                                            <CRow>
-                                                <CCol xs="12" md="6" sm="6" className="mb-1">
-                                                    <CButton color="success" block onClick={() => this.registerForm()}>Register</CButton>
-                                                </CCol>
-                                                <CCol xs="12" md="6" sm="6" className="mb-1">
-                                                    <CButton color="success" block  onClick={() => this.props.history.push('/')} >Cancel</CButton>
-                                                    {/* <Link to="/user-list" className="  btn btn-success" block >Cancel</Link> */}
-                                                </CCol>
-                                            </CRow>
-                                        </CCardFooter>
-                                    </CCard>
-
-
-
-                                </CCardGroup>
-                            </CForm>
-                        </CCol>
                     </CRow>
                   </CCardFooter>
                 </CCard>
