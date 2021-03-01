@@ -113,7 +113,6 @@ class Login extends Component {
                         <CInput type="password" disabled={loading} name="password" value={password} placeholder="Password" autoComplete="current-password" onChange={(event) => this.handleChange(event)} />
                       </CInputGroup>
                       <div className="text-danger empty-email-password">{errors.password}</div>
-
                       <CRow >
                         <CCol>
                           <br />
