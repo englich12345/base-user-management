@@ -17,7 +17,6 @@ export const getUserList = async () => {
             console.log(err)
         })
 }
-// export 
 
 
 export const register = async (params) => {
@@ -35,14 +34,7 @@ export const Deleting = async(id)=>{
     return await axios.delete(url)
 }
 export const update = async (id, params) => {
-    // api​/user​/:id tức là truyền id lên url, 
-    // const url = baseUrl + `api/user/update/${id}` // api bị sai
-    //------ vì sao _id bên kia bên ni thì rứa  
-    //---vì sao role admin mới sửa đc, đáng kẻ role admin sửa hết mọi người chơ?
-    //vì sao role:admin không thể đăng kí/ how ?
-    //role ở edit k nhảy
-    
-    const url = baseUrl + `api/user/${id}`// ----vì răng lại id và params
+    const url = baseUrl + `api/user/${id}`
     
     const reqParams = {
         name: params.name,
