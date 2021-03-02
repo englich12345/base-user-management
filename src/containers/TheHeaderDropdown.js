@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
+import {removingItem} from '../common/localStorage'
+// import { Link ,useHistory} from "react-router-dom";
+import { withRouter } from 'react-router';
+
 import {
+  CButton,
   CDropdown,
   CDropdownItem,
   CDropdownMenu,
@@ -7,12 +12,18 @@ import {
   CImg
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import { Link } from 'react-router-dom'
 class TheHeaderDropdown extends Component{
   constructor(){
     super()
     this.state={
-
     }
+  }
+  
+logOutHeader=()=>{
+    removingItem('token');
+    const { history } = this.props
+    history.push('/login')
   }
 render(){
   return (
@@ -30,12 +41,14 @@ render(){
           />
         </div>
       </CDropdownToggle>
+      <CButton>
       <CDropdownMenu className="pt-0" placement="bottom-end">
-        <CDropdownItem>
+        <CButton onClick={()=>this.logOutHeader()}>
           <CIcon name="cil-lock-locked" className="mfe-2" />
           Log out
-        </CDropdownItem>
+        </CButton>
       </CDropdownMenu>
+      </CButton>
     </CDropdown>
   )
 
@@ -43,4 +56,5 @@ render(){
 }
 
 
-export default TheHeaderDropdown
+export default withRouter(TheHeaderDropdown)
+
