@@ -14,9 +14,7 @@ class UserList extends Component {
             id: "",
             errorMessage:"",
         }
-    }
-    // Chỗ ni viết hàm toggle truyền id vô mà dưới nớ lúc click gọi hàm toggle lại k truyền id vô
-    
+    }    
     toggle = (_id) => {
         this.setState({
             modal: !this.state.modal,
@@ -24,8 +22,6 @@ class UserList extends Component {
 
         })
     }
-    // Chỗ ni truyền id vô làm chi, trong khi setState để có id , lấy id đó mới đúng
-    /// trong trường hợp nào mình truyền vào?
     handleDeleting = async () => {
         const id=this.state.id
         console.log(id)
@@ -46,14 +42,16 @@ class UserList extends Component {
             })
         })
     }
-    componentDidMount = async () => {
-        // document.title = 'User list';
+    getUserList=async()=>{
         await getUserList().then(res => {
             this.setState({
                 list: res.data
             })
         }).catch(err => {
         })
+    }
+    componentDidMount = () => {
+        this.getUserList()
     }
     render() {
         const { list } = this.state
@@ -84,7 +82,7 @@ class UserList extends Component {
                                     <td>{value.email}</td>
                                     <td>{moment(value.createdAt).format("MMM Do YY")}</td>
                                     <td>{value.role === 'user' && <><CButton type="submit" color="success" onClick={() => this.props.history.push(`/user/${value._id}/edit`)}  >Edit</CButton>         
-                                    <CButton click="warningModal = true" type="submit" className="bg-danger" onClick={() => this.toggle(value._id)}><CIcon name="cil-trash" /><i className="cil-trash"></i> Delete</CButton>
+                                    &ensp;<CButton click="warningModal = true" type="submit" className="bg-danger" onClick={() => this.toggle(value._id)}><CIcon name="cil-trash" /><i className="cil-trash"></i> Delete</CButton>
                                     </>
                                     }</td>
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
   CDropdown,
   CDropdownItem,
@@ -7,8 +7,14 @@ import {
   CImg
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+class TheHeaderDropdown extends Component{
+  constructor(){
+    super()
+    this.state={
 
-const TheHeaderDropdown = () => {
+    }
+  }
+render(){
   return (
     <CDropdown
       inNav
@@ -27,11 +33,14 @@ const TheHeaderDropdown = () => {
       <CDropdownMenu className="pt-0" placement="bottom-end">
         <CDropdownItem>
           <CIcon name="cil-lock-locked" className="mfe-2" />
-          Lock Account
+          Log out
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>
   )
+
 }
+}
+
 
 export default TheHeaderDropdown
