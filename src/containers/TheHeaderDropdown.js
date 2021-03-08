@@ -1,18 +1,16 @@
-import React, { Component } from 'react'
-import {removingItem} from '../common/localStorage'
+import React, { Component } from 'react';
+import {removingItem} from '../common/localStorage';
 // import { Link ,useHistory} from "react-router-dom";
 import { withRouter } from 'react-router';
 
 import {
   CButton,
   CDropdown,
-  CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
   CImg
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { Link } from 'react-router-dom'
 class TheHeaderDropdown extends Component{
   constructor(){
     super()
