@@ -73,30 +73,6 @@ class UserList extends Component {
     }
 }
 
-
-
-  
-
-// class App extends React.Component {
-//     render() {
-//       return (
-//         <div className="jumbotron">
-//                     <div className="container">
-//                         <div className="col-sm-8 col-sm-offset-2">
-//                             <Router>
-//                                 <div>
-//                                     <PrivateRoute exact path="/user-list" component={UserList} />
-//                                     <Route path="/login" component={Login}/>
-//                                 </div>
-//                             </Router>
-//                         </div>
-//                     </div>
-//                 </div>
-//       );
-//     }
-//   }
-  
-
 export default UserList;
 
 
