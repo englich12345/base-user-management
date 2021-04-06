@@ -58,7 +58,6 @@ class Login extends Component {
       [name]: value
     });
   }
-
   loginForm = async () => {
     const { email, password } = this.state;
     const form = {
@@ -75,6 +74,7 @@ class Login extends Component {
       setUser('token', res.data.accessToken)
       const { history } = this.props
       history.push('/')
+      window.location.href = '/'
     }).catch(error => {
       this.setState({
         loading: false

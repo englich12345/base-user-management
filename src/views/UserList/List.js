@@ -5,68 +5,71 @@ import moment from 'moment';
 import { CButton, CModalHeader, CModalBody, CModalFooter, CModal } from '@coreui/react';
 import '../pages/login/login.css';
 
-class List extends Component{
+class List extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            list:'',
+            list: '',
         }
     }
-     render() {
-       const {list, editUser,handleDeleting,toggle, modal}=this.props
-       return (
-           <div className="container">
-               <div class="row">
-                   <h2 class="col-9">User listing</h2>
-                   <div class="col-3 col-auto">
-                       <Link to="/register" className="col-sm-2 btn btn-success">ADD A NEW USER</Link>
-                   </div>
-               </div>
-               <table class="table">
-                   <thead>
-                       <tr>
-                           <th scope="col">Username</th>
-                           <th scope="col">Role for</th>
-                           <th scope="col">Email</th>
-                           <th scope="col">Created At</th>
-                           <th scope="col">Action</th>
-                       </tr>
-                   </thead>
-                   <tbody>
-                       {
-                           list.map((value) => {
-                               return <tr>
-                                   <td>{value.name}</td>
-                                   <td>{value.role}</td>
-                                   <td>{value.email}</td>
-                                   <td>{moment(value.createdAt).format("MMM Do YY")}</td>
-                                   {
-                                   }
-                                   <td>{value.role === 'user' && <><CButton type="submit" color="success" onClick={() => editUser(value._id)}>Edit</CButton>
-                                   &nbsp;<CButton click="warningModal = true" type="submit" className="bg-danger" onClick={() =>toggle(value._id)}><CIcon name="cil-trash" /><i className="cil-trash"></i> Delete</CButton>
-                                   </>
-                                   }</td>
-                               </tr>
-                           })
-                       }
+    render() {
+        const { list, editUser, handleDeleting, toggle, modal } = this.props
+        return (
+            <div className="container">
+                <div class="row">
+                    <h2 class="col-9">User listing</h2>
+                    <div class="col-3 col-auto">
+                        <Link to="/register" className="col-sm-2 btn btn-success">ADD A NEW USER</Link>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Username</th>
+                            <th scope="col">Role for</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Created At</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            list.map((value) => {
+                                return <tr>
+                                    <td>{value.name}</td>
+                                    <td>{value.role}</td>
+                                    <td>{value.email}</td>
+                                    <td>{moment(value.createdAt).format("MMM Do YY")}</td>
+                                    {
+                                    }
+                                    <td>{value.role === 'user' && <><CButton type="submit" color="success" onClick={() => editUser(value._id)}>Edit</CButton>
+                                   &nbsp;<CButton click="warningModal = true" type="submit" className="bg-danger" onClick={() => toggle(value._id)}><CIcon name="cil-trash" /><i className="cil-trash"></i> Delete</CButton>
+                                    </>
+                                    }</td>
+                                </tr>
+                            })
+                        }
 
-                   </tbody>
-               </table>
-               {
+                    </tbody>
+                </table>
+                {
 
-               }
-               <CModal show={modal} onClick={() => toggle()} >
-                   <CModalHeader class="p-3 mb-2 bg-warning text-white">Warning</CModalHeader>
-                   <CModalBody>Make sure that you want to delete</CModalBody>
-                   <CModalFooter>
-                       <CButton onClick={() => handleDeleting()} color="primary">Yes</CButton>{' '}
-                       <CButton color="secondary" onClick={this.toggle}>Cancel</CButton>
-                   </CModalFooter>
-               </CModal>
-               
-           </div>
+                }
+                <CModal show={modal} onClick={() => toggle()} >
+                    <CModalHeader class="p-3 mb-2 bg-warning text-white">Warning</CModalHeader>
+                    <CModalBody>Make sure that you want to delete</CModalBody>
+                    <CModalFooter>
+                        <CButton onClick={() => handleDeleting()} color="primary">Yes</CButton>{' '}
+                        <CButton color="secondary" onClick={this.toggle}>Cancel</CButton>
+                    </CModalFooter>
+                </CModal>
 
-       )
-   }
+            </div>
+
+        )
+
+    }
+
+
 }
 export default List

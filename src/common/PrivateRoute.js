@@ -8,7 +8,12 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
         <Route {...rest} render={props => (
             getUser('token')
                 ? <Component {...props} />
-                : <Redirect exact to={{ path: '/login', state: { from: props.location } }} />
+                : <Redirect to={{pathname: '/login'}} />
         )} />
+        // <Route {...rest} render={props => (
+        //     getUser('token')
+        //         ? <Component {...props} />
+        //         : <Redirect exact to={{ path: '/login', state: { from: props.location } }} />
+        // )} />
     )   
 }
