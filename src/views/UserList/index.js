@@ -6,7 +6,7 @@ import moment from 'moment';
 import { CButton, CModalHeader, CModalBody, CModalFooter, CModal } from '@coreui/react';
 import '../pages/login/login.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import {PrivateRoute} from './../../../src/common/PrivateRoute';
+import { PrivateRoute } from './../../../src/common/PrivateRoute';
 import Login from "../pages/login/Login";
 import ReactDOM from 'react-dom';
 import List from './List'
@@ -56,24 +56,48 @@ class UserList extends Component {
     componentDidMount = async () => {
         await this.getUserList()
     }
-   
+
     editUser = (id) => {
         this.props.history.push(`/user/${id}/edit`)
     }
-    render(){
-        return(
-            <List  
-            list={this.state.list} 
-            editUser={this.editUser} 
-            toggle={this.toggle} 
-            modal={this.state.modal}
-            handleDeleting={this.handleDeleting}
-              />
+    render() {
+        return (
+            <List
+                list={this.state.list}
+                editUser={this.editUser}
+                toggle={this.toggle}
+                modal={this.state.modal}
+                handleDeleting={this.handleDeleting}
+            />
         )
     }
 }
+
+
+
+
+
+// class App extends React.Component {
+//     render() {
+//       return (
+//         <div className="jumbotron">
+//                     <div className="container">
+//                         <div className="col-sm-8 col-sm-offset-2">
+//                             <Router>
+//                                 <div>
+//                                     <PrivateRoute exact path="/user-list" component={UserList} />
+//                                     <Route path="/login" component={Login}/>
+//                                 </div>
+//                             </Router>
+//                         </div>
+//                     </div>
+//                 </div>
+//       );
+//     }
+//   }
+
+
 export default UserList;
 
 
 
-  

@@ -20,8 +20,7 @@ class TheHeaderDropdown extends Component{
   
 logOutHeader=()=>{
     removingItem('token');
-    const { history } = this.props
-    history.push('/login')
+    window.location.href = '/'
   }
 render(){
   return (
